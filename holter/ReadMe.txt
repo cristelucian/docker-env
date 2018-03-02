@@ -2,8 +2,8 @@ Folder structure:
 
 app -- source code of the application
 db -- database persistent volume from docker
-docker -- dicekr config. files 
-docker-compose.yaml -- configuration file for env.
+docker -- docker config. files (build) 
+docker-compose.yaml -- configuration file for env. (magic)
 
 
 
@@ -16,7 +16,7 @@ Steps to use the repo:
   a. cd docker
   b. docker build -t {namespace}/{name_of_images:tag} .
   	ex: docker build -t sepa/holterh:u16php7.1
-  obs: {namespace}/{name_of_images:tag} -is important we will need to use in the docker-compose file
+  obs: {namespace}/{name_of_images:tag} -is important we will need to use in the docker-compose.yaml file
 2. need to clone the git repo to app folder
 3. db folder need to be present
 4. edit docker-compose.yaml file and add the correct name of the docker image:
@@ -25,7 +25,7 @@ Steps to use the repo:
    webapp:
    	image: sepa/holterh:u16php71
 5. Start env(Open CLI/POWERSHEL with admin rights ):
-   - docker-compose up -d (need to be run on the folder level where the docker-compose file exist0)
+   - docker-compose up -d (need to be run on the folder level where the docker-compose file exist)
    - check container:
      docker ps 
      you will get something like :
