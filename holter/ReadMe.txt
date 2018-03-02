@@ -24,7 +24,7 @@ Steps to use the repo:
    ex:  
    webapp:
    	image: sepa/holterh:u16php71
-5. Start env:
+5. Start env(Open CLI/POWERSHEL with admin rights ):
    - docker-compose up -d (need to be run on the folder level where the docker-compose file exist0)
    - check container:
      docker ps 
