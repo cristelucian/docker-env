@@ -41,7 +41,8 @@ CONTAINER ID  IMAGE                    COMMAND                 CREATED          
 7. open browser and access:
 	www.holter-home.loc
 
-
+8. mysql host 127.0.0.3 port 3306 user:root pass:admin
+9. on project you need to setup host to be mysql(DNS name of the container define in docker-compose.yaml)
 
 
 
