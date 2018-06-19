@@ -24,11 +24,11 @@ Because the docker is not persistent (when stop the data is lost and on starup h
  - db folder is to store the mysql data when you stop the docker container or it fails from som reasones
 
 Steps to use the repo:
-1. buid the images
+1. buidl the images
 2. need to clone the git repo to app folder
 3. db folder need to be present
 4. Start env(Open CLI/POWERSHEL with admin rights ):
-   - docker-compose up -d (need to be run on the folder level where the docker-compose file exist0)
+   - docker-compose up -d (need to be run on the folder level where the docker-compose file exist)
    - check container:
      docker ps
 
