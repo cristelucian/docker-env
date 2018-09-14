@@ -122,6 +122,8 @@ RUN sed -i \
 #supervisor conf
 ADD supervisord.conf /etc/supervisord.conf
 
+RUN apt-get install -y zip php7.0-zip 
+
 #startup script
 COPY prepare.sh  .
 COPY start.sh  .
