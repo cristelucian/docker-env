@@ -1,2 +1,3 @@
 #!/bin/sh
-docker build   -t sepa/hadishop:dev-u16-php7.1  .
+docker build   -t llucas/hf_php_70_1:latest  .
+docker push llucas/hf_php_70_1:latest  

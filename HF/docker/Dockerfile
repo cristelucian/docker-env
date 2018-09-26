@@ -48,6 +48,8 @@ RUN  phpenmod pdo_mysql
 ADD hfabrick.conf /etc/apache2/sites-available/hfabrick.conf
 RUN a2ensite hfabrick.conf
 #RUN a2dissite 000-default.conf
+
+RUN a2enmod ssl 
 #timezone
 RUN rm  -rf /etc/localtime
 RUN ln -s /usr/share/zoneinfo/Europe/Vienna /etc/localtime
@@ -115,9 +117,6 @@ RUN sed -i \
 RUN sed -i \
         -e "s/; upload_max_filesize = 2M/ upload_max_filesize = 10M/g" \
         /etc/php/7.0/cli/php.ini                
-
-
-
 
 #supervisor conf
 ADD supervisord.conf /etc/supervisord.conf

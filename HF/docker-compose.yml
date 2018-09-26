@@ -1,7 +1,7 @@
 version: '3'
 services:
   webapp:
-   image:  llucas/hf_php_70:latest
+   image:  llucas/hf_php_70_1:latest
    ports:
     - '80:80'
     - '443:443'
@@ -12,7 +12,7 @@ services:
    networks:
       - elk
   mysql:
-    image: mysql:5.7
+    image: llucas/mysql:5.7
     ports:
       - "3306:3306"
     volumes:
