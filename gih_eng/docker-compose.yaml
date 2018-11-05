@@ -1,7 +1,7 @@
 version: '3'
 services:
   webapp:
-   image: sepa/holterh:u16php71
+   image: llucas/gih_eng:latest
    ports:
     - '80:80'
     - '4443:443'
