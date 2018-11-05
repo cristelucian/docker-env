@@ -1,0 +1,4 @@
+#!/bin/sh
+sudo -u nobody -g nobody /usr/bin/php7.0 $*
+
+return $?

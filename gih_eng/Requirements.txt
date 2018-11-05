@@ -1,0 +1,5 @@
+You need to have install :
+	1.Docker (Mac OS , Linux Distro,Windos)
+	 - For Windos you need to activate Hyper V (https://docs.docker.com/machine/drivers/hyper-v/)
+	2. Git install
+	3. CMD, CLI, POWERSHELL with admin rights 

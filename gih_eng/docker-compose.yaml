@@ -1,0 +1,21 @@
+version: '3'
+services:
+  webapp:
+   image: sepa/holterh:u16php71
+   ports:
+    - '80:80'
+    - '4443:443'
+   volumes:
+    - ./app:/var/www/
+   command: /start.sh
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+volumes:
+  app:
+  db:
