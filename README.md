@@ -11,11 +11,18 @@ You need to have install :
 
 
 Folder structure:
-
-app -- source code of the application
-db -- database persistent volume from docker
-docker -- docker config. files 
-docker-compose.yaml -- configuration file for env.
+----
+        app -- source code of the application
+        
+        db -- database persistent volume from docker
+        
+        docker -- docker config. files 
+        
+        docker-compose.yaml -- configuration file for env.
+        
+        
+        -----
+        
 
 
 
