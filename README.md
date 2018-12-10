@@ -14,7 +14,7 @@ Folder structure:
 
 app -- source code of the application
 db -- database persistent volume from docker
-docker -- dicekr config. files 
+docker -- docker config. files 
 docker-compose.yaml -- configuration file for env.
 
 
