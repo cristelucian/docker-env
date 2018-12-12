@@ -78,8 +78,9 @@ RUN sed -i \
         /etc/php/7.1/apache2/php.ini
 
 RUN sed -i \
-        -e "s/; max_input_vars = 1000/ max_input_vars = 1045/g" \
+        -e "s/; max_input_vars = 1000/ max_input_vars = 5000/g" \
         /etc/php/7.1/apache2/php.ini
+
 
 
 #cli
