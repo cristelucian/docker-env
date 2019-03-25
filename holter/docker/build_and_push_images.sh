@@ -1,3 +1,3 @@
 #!/bin/sh
-docker build   -t llucas/holterh:latest  .
-docker push llucas/holterh:latest
+docker build   -t llucas/holterh:7.0  .
+docker push llucas/holterh:7.0 
