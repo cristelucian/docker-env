@@ -11,10 +11,11 @@ ENV LC_ALL en_US.UTF-8
 
 RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y
 RUN apt-get update
+RUN apt-get install -y zip
 RUN apt-get install -y apache2 php7.0 php7.0-mbstring libapache2-mod-php7.0 \
-                      php7.0-mysql  php7.0-pdo php7.0-xml php7.0-intl  \ 
-                      php7.0-curl php7.0-mysql php7.0-xml php7.0-gd \
-                      php7.0-mbstring 
+      php7.0-mysql  php7.0-pdo php7.0-xml php7.0-intl  \ 
+      php7.0-curl php7.0-mysql php7.0-xml php7.0-gd \
+      php7.0-mbstring php7.0-zip
 
 RUN apt-get install -y vim
 RUN apt-get install -y nano
@@ -34,16 +35,16 @@ RUN apt-get install -y \
       vim \
       supervisor \ 
       screen \
-      nano
+      nano 
 
 RUN curl -sS https://getcomposer.org/installer | \
-    sudo php -- --install-dir=/usr/local/bin --filename=composer
+      sudo php -- --install-dir=/usr/local/bin --filename=composer
 RUN apt-get install -y php-intl php7.0-mcrypt
 #enable mycrypt module
 RUN a2enmod rewrite
 RUN a2enmod headers
 RUn a2enmod expires
-RUN apt-get install -y 
+
 RUN  phpenmod pdo_mysql
 #apache
 ADD gih.conf /etc/apache2/sites-available/gih.conf
@@ -55,54 +56,59 @@ RUN ln -s /usr/share/zoneinfo/Europe/Vienna /etc/localtime
 
 #apache2
 RUN sed -i \
-        -e "s/memory_limit\s*=\s*128M/memory_limit = 1024M/g" \
-        /etc/php/7.0/apache2/php.ini
+      -e "s/memory_limit\s*=\s*128M/memory_limit = 1024M/g" \
+      /etc/php/7.0/apache2/php.ini
 
 
 RUN sed -i \
-        -e "s/;realpath_cache_size/realpath_cache_size /g" \
-        /etc/php/7.0/apache2/php.ini
+      -e "s/;realpath_cache_size/realpath_cache_size /g" \
+      /etc/php/7.0/apache2/php.ini
 
 RUN sed -i \
-        -e "s/;realpath_cache_ttl\s*=\s*120/realpath_cache_ttl=600/g" \
-        /etc/php/7.0/apache2/php.ini
-
-
-RUN sed -i \
-        -e "s/;opcache.max_accelerated_files=10000/opcache.max_accelerated_files=20000/g" \
-        /etc/php/7.0/apache2/php.ini
-
+      -e "s/;realpath_cache_ttl\s*=\s*120/realpath_cache_ttl=600/g" \
+      /etc/php/7.0/apache2/php.ini
 
 
 RUN sed -i \
-        -e "s/post_max_size = 8M/post_max_size = 20M/g" \
-        /etc/php/7.0/apache2/php.ini
+      -e "s/;opcache.max_accelerated_files=10000/opcache.max_accelerated_files=20000/g" \
+      /etc/php/7.0/apache2/php.ini
+
+
 
 RUN sed -i \
-        -e "s/; max_input_vars = 1000/ max_input_vars = 1045/g" \
-        /etc/php/7.0/apache2/php.ini
+      -e "s/post_max_size = 8M/post_max_size = 20M/g" \
+      /etc/php/7.0/apache2/php.ini
 
+RUN sed -i \
+      -e "s/; max_input_vars = 1000/ max_input_vars = 1045/g" \
+      /etc/php/7.0/apache2/php.ini
+RUN sed -i \
+      -e "s/upload_max_filesize\s*=\s*2M/upload_max_filesize = 20M/g" \
+      /etc/php/7.0/apache2/php.ini
 
 #cli
 RUN sed -i \
-        -e "s/memory_limit\s*=\s*128M/memory_limit = 1024M/g" \
-        /etc/php/7.0/cli/php.ini
+      -e "s/memory_limit\s*=\s*128M/memory_limit = 1024M/g" \
+      /etc/php/7.0/cli/php.ini
 
 RUN echo   "post_max_size = 20M" >> /etc/php/7.0/cli/php.ini
 
 RUN sed -i \
-        -e "s/;realpath_cache_ttl\s*=\s*120/realpath_cache_ttl=600/g" \
-        /etc/php/7.0/cli/php.ini
+      -e "s/;realpath_cache_ttl\s*=\s*120/realpath_cache_ttl=600/g" \
+      /etc/php/7.0/cli/php.ini
 
 RUN sed -i \
-        -e "s/;realpath_cache_size/realpath_cache_size /g" \
-        /etc/php/7.0/cli/php.ini
+      -e "s/;realpath_cache_size/realpath_cache_size /g" \
+      /etc/php/7.0/cli/php.ini
 
 
 RUN sed -i \
-        -e "s/;opcache.max_accelerated_files=10000/opcache.max_accelerated_files=20000/g" \
-        /etc/php/7.0/cli/php.ini
+      -e "s/;opcache.max_accelerated_files=10000/opcache.max_accelerated_files=20000/g" \
+      /etc/php/7.0/cli/php.ini
 
+RUN sed -i \
+      -e "s/upload_max_filesize\s*=\s*2M/upload_max_filesize = 20M/g" \
+      /etc/php/7.0/cli/php.ini
 
 #supervisor conf
 ADD supervisord.conf /etc/supervisord.conf

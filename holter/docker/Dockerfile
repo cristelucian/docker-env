@@ -120,3 +120,4 @@ WORKDIR /var/www
 #timezone
 RUN rm  -rf /etc/localtime
 RUN ln -s /usr/share/zoneinfo/Europe/Vienna /etc/localtime
+RUN a2enmod ssl
